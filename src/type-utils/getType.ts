@@ -5,6 +5,7 @@ function getType(data: unknown): string {
 
 getType(null);
 getType(1);
+getType(true);
 getType(Number(1));
 getType(() => console.log(2));
 getType({ a: 1 });
