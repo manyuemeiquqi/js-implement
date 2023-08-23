@@ -43,3 +43,4 @@ limit2Log(2);
 limit2Log(3);
 limit2Log(4);
 limit2Log(5);
+export {};
