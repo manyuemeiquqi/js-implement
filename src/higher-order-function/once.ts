@@ -1,9 +1,13 @@
 function once(fn: (...arg: unknown[]) => unknown) {
   let called: boolean = false;
+  let res: unknown;
   return function (this: unknown, ...args: unknown[]) {
     if (!called) {
-      fn.apply(this, args);
       called = true;
+      res = fn.apply(this, args);
+      return res;
+    } else {
+      return res;
     }
   };
 }
@@ -14,3 +18,5 @@ function init(a: unknown, b: unknown) {
 const onceInit = once(init);
 onceInit(1, 2);
 onceInit(2, 3);
+
+export { once };
