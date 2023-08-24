@@ -1,3 +1,4 @@
+// 链式调用思想的应用，解决异步的回调地狱
 class Calculator {
   res: number;
   constructor() {
