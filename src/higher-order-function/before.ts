@@ -26,11 +26,8 @@
 
 function before(n: number, fn: (...args: unknown[]) => unknown) {
   return function (this: unknown, ...args: unknown[]) {
-    if (n <= 1) return undefined;
-    else {
-      n--;
-      return fn.apply(this, args);
-    }
+    if (--n > 0) return fn.apply(this, args);
+    else return;
   };
 }
 const consoleLog = (str: unknown) => {
