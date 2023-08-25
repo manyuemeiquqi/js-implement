@@ -8,7 +8,7 @@
     "plugin:prettier/recommended"],
     "overrides": [
         {
-            "files": ["**/*.{ts,tsx}", "**/*.{js,jsx}"], // 只处理 ts 和 js 文件
+            "files": ["**/*.{ts,tsx}"], // 只处理 ts 和 js 文件
             "excludedFiles": [".eslintrc.json"], // 这里禁用了 .eslintrc.js 的类型检查
             "parser": "@typescript-eslint/parser", // 能看懂 TypeScript
             "parserOptions": {
@@ -23,6 +23,12 @@
             "plugins": [
               // 使用 typescript x eslint 的插件
               "@typescript-eslint"
+            ]
+          },   {
+            "files": ["**/*.{js,jsx}"], // 只处理 js 和 jsx 文件
+            "extends": [
+              "eslint:recommended",
+              "plugin:prettier/recommended"
             ]
           }
     ],
