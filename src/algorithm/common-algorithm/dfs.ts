@@ -3,16 +3,11 @@ interface TreeNode {
   label?: unknown;
 }
 function deepFirstSearch(data: TreeNode): void {
-  if (data.children !== undefined) {
-    console.log("data: ", data.label);
-
-    if (data.children.length === 0) return;
-    else {
-      for (let i = 0; i < data.children.length; i++) {
-        deepFirstSearch(data.children[i]);
-      }
+  console.log("data: ", data.label);
+  if (data.children)
+    for (let i = 0; i < data.children.length; i++) {
+      deepFirstSearch(data.children[i]);
     }
-  } else return;
 }
 const data: TreeNode = {
   label: "root",
