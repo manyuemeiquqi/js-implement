@@ -20,10 +20,9 @@ const obj = {
 function pathToTree(pathObj: Record<string, unknown>) {
   const res = {};
   const arr = Object.entries(pathObj);
-  for (const item of arr) {
-    const path = item[0].split("-");
-    const val = item[1];
-    setAttribute(path, res, val);
+  for (const [path, val] of arr) {
+    const pathArr = path.split("-");
+    setAttribute(pathArr, res, val);
   }
 
   function setAttribute(
@@ -36,9 +35,7 @@ function pathToTree(pathObj: Record<string, unknown>) {
       return;
     } else {
       const item = path.shift() as string;
-      if (obj[item] === undefined) {
-        obj[item] = {};
-      }
+      obj[item] = obj[item] || {};
       setAttribute(path, obj[item] as Record<string, unknown>, val);
     }
   }
