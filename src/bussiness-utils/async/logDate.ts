@@ -5,4 +5,5 @@ function logDate(f: () => unknown) {
     }, 2000);
   };
 }
+
 logDate(() => console.log(Date.now()))();
