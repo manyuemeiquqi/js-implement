@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@types/lodash": "^4.14.197",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
     "eslint": "^8.47.0",
@@ -13,6 +14,11 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
+    "promises-aplus-tests": "^2.1.2",
     "ts-node": "^10.9.1"
+  },
+  "scripts": {
+    "test-promise": "promises-aplus-tests promise"
   }
 }
