@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@types/lodash": "^4.14.197",
+    "@types/ramda": "^0.29.3",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
     "eslint": "^8.47.0",
@@ -16,6 +17,7 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "promises-aplus-tests": "^2.1.2",
+    "ramda": "^0.29.0",
     "ts-node": "^10.9.1"
   },
   "scripts": {
