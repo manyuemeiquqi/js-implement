@@ -1,7 +1,7 @@
 const arr: number[] = [1, 2, 3];
-function proxyArray(arr: unknown[]) {
+function proxyArray<T>(arr: T[]) {
   return new Proxy(arr, {
-    get(data, property: string) {
+    get(data, property: string): T {
       if (+property < 0) {
         const tailIdx = data.length + +property;
         return data[tailIdx];
