@@ -6,24 +6,20 @@
 type F = (...args: any[]) => any;
 type F1 = (args: any) => any;
 type FunArr = [F, ...F1[]];
-type getLast<T extends FunArr> = T extends [
-  F,
-  ...(F1[] | []),
-  infer B extends F1,
-]
+type GetLast<T extends FunArr> = T extends [...any[], infer B extends F1]
   ? ReturnType<B>
   : never;
 
 function pipe<T extends FunArr>(
   ...fnList: T
-): (...args: Parameters<T[0]>) => getLast<T> {
+): (...args: Parameters<T[0]>) => GetLast<T> {
   return function (this: unknown, ...args: Parameters<T[0]>) {
     let tmp;
     for (let i = 0; i < fnList.length; i++) {
       if (i === 0) tmp = fnList[0].apply(this, args);
       else tmp = fnList[i].apply(this, [tmp]);
     }
-    return tmp as getLast<T>;
+    return tmp as GetLast<T>;
   };
 }
 
