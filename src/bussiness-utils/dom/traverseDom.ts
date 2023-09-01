@@ -1,12 +1,10 @@
-function traverseDomTree(
-  node: HTMLElement | ChildNode,
-): HTMLElement | ChildNode[] {
-  const res: HTMLElement | ChildNode[] = [];
-  const dfs = (element: HTMLElement | ChildNode) => {
+function traverseDomTree(node: HTMLElement): HTMLElement[] {
+  const res: HTMLElement[] = [];
+  const dfs = (element: HTMLElement) => {
     res.push(element);
-    if (element.childNodes) {
-      for (const child of element.childNodes) {
-        dfs(child);
+    if (element.children) {
+      for (const child of element.children) {
+        dfs(child as HTMLElement);
       }
     }
   };
