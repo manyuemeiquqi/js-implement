@@ -3,3 +3,6 @@
 interface Array {
   myPush(...val: unknown[]): number;
 }
+interface String {
+  myPadStart(length: number, char: string): string;
+}
