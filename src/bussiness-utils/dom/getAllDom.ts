@@ -4,7 +4,7 @@ function getAllDom(node: HTMLElement | Document): HTMLElement[] {
 
 function getAllTag(node: HTMLElement | Document): string[] {
   const domArr = Array.from(node.querySelectorAll("*"));
-  const res = domArr.map((item) => item.localName);
+  const res = domArr.map((item) => item.tagName);
   console.log("res: ", res);
   return Array.from(new Set(res));
 }

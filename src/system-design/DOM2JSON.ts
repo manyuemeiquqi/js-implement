@@ -4,7 +4,7 @@ type NodeJSON = {
 };
 function DOM2JSON(node: HTMLElement): NodeJSON {
   const cur: NodeJSON = {
-    name: node.localName,
+    name: node.tagName,
     children: [],
   };
 
