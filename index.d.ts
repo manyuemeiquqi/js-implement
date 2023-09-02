@@ -6,3 +6,6 @@ interface Array {
 interface String {
   myPadStart(length: number, char: string): string;
 }
+interface Object {
+  myIs(x: unknown, y: unknown): boolean;
+}
