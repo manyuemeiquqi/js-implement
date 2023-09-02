@@ -1,6 +1,6 @@
-function trim(str: string) {
-  return str.replace(/(^\s+)|(\s+$)/g, "");
-}
-
-trim("  hello world  ");
-// lc151
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="../../../index.d.ts" />
+String.prototype.myTrim = function () {
+  return this.replace(/(^\s+)|(\s+$)/g, "");
+};
+console.log("  hello world  ".myTrim());
