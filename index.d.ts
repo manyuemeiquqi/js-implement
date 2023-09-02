@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 
 interface Array {
+  myUnshift(...val: unknown[]): number;
   myPush(...val: unknown[]): number;
 }
 interface String {
