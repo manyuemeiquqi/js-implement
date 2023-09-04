@@ -1,4 +1,7 @@
-function myInstanceof(someObject, fn) {
+function myInstanceof(
+  someObject: unknown,
+  fn: (...args: unknown[]) => unknown,
+): boolean {
   // 这里是为了排除三条case
   // null instanceof Object
   // 1 instanceof Object
