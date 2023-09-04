@@ -7,6 +7,7 @@ interface Array {
 interface String {
   myPadStart(length: number, char: string): string;
   myTrim(): string;
+  myIndexOf(str: string, searchPosition?: number): number;
 }
 interface Object {
   myIs(x: unknown, y: unknown): boolean;
