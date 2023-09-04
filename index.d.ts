@@ -3,6 +3,7 @@
 interface Array {
   myUnshift(...val: unknown[]): number;
   myPush(...val: unknown[]): number;
+  myIncludes(ele: unknown, findIndex: number = 0): boolean;
 }
 interface String {
   myPadStart(length: number, char: string): string;
