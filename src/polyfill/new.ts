@@ -6,7 +6,9 @@ function myNew<T extends unknown[]>(fn: (...args: T) => unknown, ...args: T) {
   };
   const fnRes = fn.apply(res, args);
   //   Object.setPrototypeOf(res, fn.prototype as object);
-  return fnRes !== null && typeof fnRes === "object" ? fnRes : res;
+  return fnRes !== null && typeof ["function", "object"].includes(typeof fnRes)
+    ? fnRes
+    : res;
 }
 const Person = function (
   this: {
