@@ -1,9 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../index.d.ts" />
 
-String.prototype.myIndexOf = function (str: string, searchPosition?: number) {
+String.prototype.myIndexOf = function (
+  str: string,
+  searchPosition: number = 0,
+) {
   const searchLen = str.length;
-  if (searchPosition === undefined) searchPosition = 0;
   for (let i = searchPosition; i <= this.length - searchLen; i++) {
     let j = 0;
     for (; j < str.length; j++) {
