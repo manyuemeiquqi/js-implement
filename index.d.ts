@@ -4,6 +4,11 @@ interface Array {
   myUnshift(...val: unknown[]): number;
   myPush(...val: unknown[]): number;
   myIncludes(ele: unknown, findIndex: number = 0): boolean;
+  myFill(
+    val: unknown,
+    start: number = 0,
+    end: number = (this as unknown[]).length - 1,
+  ): unknown[];
 }
 interface String {
   myPadStart(length: number, char: string): string;
