@@ -11,6 +11,7 @@ const t = setTimeout(() => {
   }, 2000);
 }, 1000);
 
+// 串行请求
 new Promise<void>((resolve) => {
   setTimeout(() => {
     console.log(111);
