@@ -9,6 +9,7 @@ interface String {
   myPadStart(length: number, char: string): string;
   myTrim(): string;
   myIndexOf(str: string, searchPosition: number = 0): number;
+  myRepeat(count: number): string;
 }
 interface Object {
   myIs(x: unknown, y: unknown): boolean;
