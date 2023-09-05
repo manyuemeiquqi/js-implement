@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise-load-image</title>
+</head>
+
+<body>
+    <script>
+        function loadImageAsync(url) {
+            return new Promise((resolve, reject) => {
+                let img = new Image()
+                img.src = url
+                img.onload=function (e) {
+                    console.log('e: ', e);
+                    resolve(img)
+                }
+                img.onerror=function(e){
+                    reject(e)
+                }
+                console.log('22');
+            })
+        }
+        loadImageAsync('https://avatars.githubusercontent.com/u/54520846?v=4').then((imgDom) => {
+            console.log('success');
+            document.body.appendChild(imgDom)
+        }).catch(() => {
+            console.log('error-load');
+        })
+
+    </script>
+</body>
+
+</html>
