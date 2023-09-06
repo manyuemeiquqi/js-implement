@@ -4,6 +4,7 @@ Promise.myAll = function <T>(values: T[]): Promise<Awaited<T>[]> {
   return new Promise((resolve, reject) => {
     const result: Awaited<T>[] = [];
     let count = 0;
+    if (values.length === 0) resolve(result);
     for (let i = 0; i < values.length; i++) {
       Promise.resolve(values[i])
         .then((res) => {
@@ -15,15 +16,21 @@ Promise.myAll = function <T>(values: T[]): Promise<Awaited<T>[]> {
     }
   });
 };
-const p = Promise.myAll([1, 2, 3]);
-const p2 = Promise.myAll([1, 2, 3, Promise.reject(444)]).catch((e) => {
+
+// 使用 .catch:
+const mixedPromisesArray = [Promise.resolve(33), Promise.reject(44)];
+const p = Promise.myAll(mixedPromisesArray).catch((e) => {
+  console.log("e: ", p);
   console.log("e: ", e);
 });
-// 一个（也是唯一的一个）输入 Promise 被拒绝，因此返回的 Promise 将被拒绝
-// const p3 = Promise.myAll([1, 2, 3, Promise.reject(555)]);
-
-// 使用 setTimeout，我们可以在队列为空后执行代码
+console.log(p);
 setTimeout(() => {
+  console.log("队列现在为空");
   console.log(p);
-  console.log(p2);
 });
+
+// Logs:
+// Promise { <state>: "fulfilled", <value>: Array[0] }
+// Promise { <state>: "pending" }
+// 队列现在为空
+// Promise { <state>: "fulfilled", <value>: Array[2] }
