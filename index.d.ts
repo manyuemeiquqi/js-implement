@@ -1,5 +1,14 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 
+type AllSettleRes =
+  | {
+      status: "fulfilled";
+      value: unknown;
+    }
+  | {
+      status: "rejected";
+      reason: unknown;
+    };
 interface Array {
   myUnshift(...val: unknown[]): number;
   myPush(...val: unknown[]): number;
@@ -18,4 +27,10 @@ interface String {
 }
 interface Object {
   myIs(x: unknown, y: unknown): boolean;
+}
+
+interface PromiseConstructor {
+  myAll<T>(values: T[]): Promise<Awaited<T>[]>;
+  myAllSettled<T>(values: T[]): Promise<Awaited<AllSettleRes>[]>;
+  myRace<T>(values: T[]): Promise<Awaited<T>>;
 }
