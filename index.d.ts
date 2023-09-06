@@ -33,4 +33,5 @@ interface PromiseConstructor {
   myAll<T>(values: T[]): Promise<Awaited<T>[]>;
   myAllSettled<T>(values: T[]): Promise<Awaited<AllSettleRes>[]>;
   myRace<T>(values: T[]): Promise<Awaited<T>>;
+  myAny<T>(values: T[]): Promise<Awaited<AllSettleRes>[]> | Promise<Awaited<T>>;
 }
