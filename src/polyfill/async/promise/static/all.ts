@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../../../index.d.ts" />
+// concurrency method
 Promise.myAll = function <T>(values: T[]): Promise<Awaited<T>[]> {
   return new Promise((resolve, reject) => {
     const result: Awaited<T>[] = [];
