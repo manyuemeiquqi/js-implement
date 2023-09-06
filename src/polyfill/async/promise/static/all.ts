@@ -6,13 +6,11 @@ Promise.myAll = function <T>(values: T[]): Promise<Awaited<T>[]> {
     let count = 0;
     if (values.length === 0) resolve(result);
     for (let i = 0; i < values.length; i++) {
-      Promise.resolve(values[i])
-        .then((res) => {
-          result[i] = res;
-          count++;
-          if (count === values.length) resolve(result);
-        })
-        .catch(reject);
+      Promise.resolve(values[i]).then((res) => {
+        result[i] = res;
+        count++;
+        if (count === values.length) resolve(result);
+      }, reject);
     }
   });
 };
