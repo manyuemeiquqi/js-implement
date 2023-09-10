@@ -8,8 +8,13 @@ function throttle(
   } = {},
 ) {
   // leading 为调用立刻触发，trailing为最后一次调用触发，两者不能同时为false
-  option.leading = option.leading === undefined ? true : option.leading;
-  option.trailing = option.trailing === undefined ? true : option.trailing;
+  option = Object.assign(
+    {
+      leading: true,
+      trailing: true,
+    },
+    option,
+  );
   let timeout: number | null;
   let result: unknown;
   let previous: number | undefined;
