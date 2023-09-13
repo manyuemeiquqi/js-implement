@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
-type CallbackFn<T> = (val: T, index: number, arr: T[]) => void;
+type CallbackFn<T, U> = (val: T, index: number, arr: T[]) => U;
 
 type AllSettleRes =
   | {
@@ -25,6 +25,7 @@ interface Array {
     callbackFn: CallbackFn<T>,
     thisArg?: any,
   ): ReturnType<CallbackFn<T>>[];
+  myFilter<T>(predicate: CallbackFn<T, any>, thisArg?: any): any[];
 }
 interface String {
   myPadStart(length: number, char: string): string;
