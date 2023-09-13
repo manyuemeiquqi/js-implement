@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
+type CallbackFn<T> = (val: T, index: number, arr: T[]) => void;
 
 type AllSettleRes =
   | {
@@ -20,6 +21,10 @@ interface Array {
     end: number = (this as unknown[]).length - 1,
   ): unknown[];
   myForEach<T>(callbackFn: CallbackFn<T>, thisArg?: any): void;
+  myMap<T>(
+    callbackFn: CallbackFn<T>,
+    thisArg?: any,
+  ): ReturnType<CallbackFn<T>>[];
 }
 interface String {
   myPadStart(length: number, char: string): string;
