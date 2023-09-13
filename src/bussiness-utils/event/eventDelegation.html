@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event-delegation</title>
+</head>
+<body>
+    <div>
+        <ul class="ul">
+            <li data-color="red">qwewqe</li>
+            <li data-color="yellow">awefwae</li>
+            <li data-color="green">awef</li>
+            <li data-color="pink">zvcxv</li>
+            <li data-color="orange">rgaerg</li>
+        </ul>
+    </div>
+    <script>
+        const ulDom = document.querySelector('.ul')
+        ulDom.addEventListener('click',handleClick)
+        function handleClick(event){
+            console.log('this.nodeName: ', this);
+            function changeColor(dom){
+                dom.style.color = dom.dataset.color
+            }
+            console.log('event.target.nodeName: ', event.target.nodeName);
+
+            if(event.target.tagName === 'LI')
+            changeColor(event.target)
+        }
+    </script>
+</body>
+</html>
