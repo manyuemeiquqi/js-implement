@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 
 type AllSettleRes =
@@ -18,6 +19,7 @@ interface Array {
     start: number = 0,
     end: number = (this as unknown[]).length - 1,
   ): unknown[];
+  myForEach<T>(callbackFn: CallbackFn<T>, thisArg?: any): void;
 }
 interface String {
   myPadStart(length: number, char: string): string;
