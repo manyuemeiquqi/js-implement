@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="../../../index.d.ts" />
+/// <reference path="../../../../index.d.ts" />
 const a = [12, 2, 1];
 console.log("a: ", a.unshift(1, 2));
 console.log("a: ", a);
