@@ -16,5 +16,5 @@ function flat(array: any[], depth: number = 1): any[] {
   }
   return res;
 }
-
+flat([12, 3, 4, 5], Infinity);
 export {};
