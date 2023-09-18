@@ -22,6 +22,7 @@ function myFetch(url: string, options: ReqOptions) {
     };
     xhr.onload = function () {
       if (xhr.status >= 200 && xhr.status < 300) {
+        // 返回的数据都是从 xhr 上进行读取
         resolve({
           status: xhr.status,
           statusText: xhr.statusText,
