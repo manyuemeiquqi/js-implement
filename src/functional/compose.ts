@@ -11,6 +11,7 @@ type GetLast<T extends FunArr> = T extends [...any[], infer B extends F1]
   ? Parameters<B>
   : never;
 
+  
 function compose<T extends FunArr>(
   ...fnList: T
 ): (...args: GetLast<T>) => ReturnType<T[0]> {
