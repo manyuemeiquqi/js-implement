@@ -1,30 +1,35 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-this-alias */
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="../../../index.d.ts" />
-
-// https://medium.com/@ankur_anand/implement-your-own-call-apply-and-bind-method-in-javascript-42cc85dba1b
-Function.prototype.myBind = function (that: unknown, ...args: unknown[]) {
-  const boundTargetFunction = this;
-  return function (...args1: unknown[]) {
-    return boundTargetFunction.apply(that, [...args, ...args1]) as unknown;
+function myBind(
+  fn: (...args: any[]) => any,
+  thisArg: unknown,
+  ...args1: unknown[]
+) {
+  const prototype = fn.prototype;
+  const fBound = function (this: unknown, ...args2: unknown[]) {
+    const arg = args1.concat(args2);
+    if (this instanceof fBound) {
+      return fn.apply(this, arg);
+    } else {
+      fBound.prototype = Function;
+      return fn.apply(thisArg, arg);
+    }
   };
-};
 
-const module1 = {
-  x: 42,
-  getX: function () {
-    return this?.x;
-  },
-};
+  if (prototype !== null && typeof prototype === "object") {
+    fBound.prototype = prototype;
+  }
+  return fBound;
+}
 
-const unboundGetX = module1.getX;
-console.log(unboundGetX()); // The function gets invoked at the global scope
-// Expected output: undefined
+function log(this: unknown, ...args: any[]) {
+  console.log(this);
 
-const boundGetX: any = unboundGetX.myBind(module1);
-console.log(boundGetX());
-// Expected output: 42
-
-export {};
+  console.log(...args);
+}
+const boundLog = myBind(log, "this value", 1, 2);
+const boundLog2 = myBind(boundLog, "new this value", 3, 4);
+boundLog2(5, 6); // "this value", 1, 2, 3, 4, 5, 6
+// 连续绑定取第一个 this ，这里就可见一斑，连续包装，离 apply 最近的依然是第一次的 this 值
