@@ -1,3 +1,4 @@
+// 采用双向链表 搭配 map 可以让存取都是 O1
 function ListNode(key, val) {
   this.val = val === undefined ? 0 : val;
   this.key = key;
