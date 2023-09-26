@@ -8,7 +8,8 @@ function mySplice<T>(
   deleteCount: number = array.length,
   ...args: any[]
 ): T[] {
-  const items = Array.from(args);
+  const insertItems = Array.from(args);
+  const insertCount = insertItems.length;
   const removeItems: T[] = [];
   removeItems.length = deleteCount;
   const len = array.length;
@@ -16,17 +17,36 @@ function mySplice<T>(
     const idx = i + start;
     if (idx in array) removeItems[i] = array[idx];
   }
-  if (removeItems.length > items.length) {
-    for (let i = 0; i < items.length; i++) {
-      array[start + i] = items[i];
+  if (deleteCount > insertCount) {
+    // 后半部分左移
+    for (let i = start; i < len - deleteCount; i++) {
+      const from = i + deleteCount;
+      const to = i + insertCount;
+      if (from in array) {
+        array[to] = array[from];
+      } else {
+        Reflect.deleteProperty(array, to);
+      }
     }
-  } else {
-        
+    array.length = len - deleteCount + insertCount;
+  } else if (deleteCount < insertCount) {
+    // 后半部分右移
+
+    for (let i = len - deleteCount; i > start; i--) {
+      const from = i + deleteCount - 1;
+      const to = i + insertCount - 1;
+      if (from in array) {
+        array[to] = array[from];
+      } else {
+        Reflect.deleteProperty(array, to);
+      }
+    }
+  }
+
+  for (let i = 0; i < insertCount; i++) {
+    array[start + i] = insertItems[i];
   }
   return removeItems;
 }
-const myFish: (string | undefined)[] = ["angel", "clown", , "sturgeon"];
-const removed = mySplice(myFish, 2, 1);
-console.log("removed: ", removed.length);
-console.log("removed: ", removed);
+
 export {};
