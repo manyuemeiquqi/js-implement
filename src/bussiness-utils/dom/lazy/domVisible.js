@@ -34,3 +34,5 @@ const observer = new IntersectionObserver((entries) => {
 });
 observer.observe(dom);
 // entries observe传入的dom集合，按照注册顺序排列
+
+// https://stackoverflow.com/questions/123999/how-can-i-tell-if-a-dom-element-is-visible-in-the-current-viewport/7557433#7557433
