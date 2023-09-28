@@ -47,4 +47,6 @@ class ExpiredStorage {
 }
 const storageManager = new ExpiredStorage(localStorage);
 console.log("storageManager: ", storageManager);
+
+// https://github.com/RonenNess/ExpiredStorage/blob/master/dist/expired_storage.js
 // export {}
