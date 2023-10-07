@@ -1,3 +1,4 @@
+// 生成器可以视为迭代器的语法糖
 const obj = {
   data: {
     name: "jinp",
