@@ -1,0 +1,9 @@
+function myCatch(p,onRejected){
+    return p.then(undefined,onRejected)
+}
+myCatch(new Promise((resolve,reject)=>{
+    reject(1)
+}),(res=>{
+    console.log('res: ', res);
+
+}))
