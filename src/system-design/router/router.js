@@ -1,3 +1,7 @@
+// 这里流程其实跑通了，但是还用两点可以深究
+// 一个是比如 跳转后 reload 需要定位到预期的页面，这里我认为是需要服务端找不到资源后需要重定向
+// 或者通过webpack sever 跑一下可以尝试
+// 另外一个是 router 库是如何个感知到 pushSate 事件的,popstate只能感受到 前进跟后退,这里gpt 思路是主动触发一次
 class Router {
   constructor(dom, option) {
     const { mode = "hash", routes = [] } = option;
