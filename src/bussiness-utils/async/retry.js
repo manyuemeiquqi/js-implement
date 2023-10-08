@@ -19,6 +19,8 @@
 //   })
 // }
 // 也可以不需要构造闭包 ，直接写一个循环去run
+
+// https://github.com/sindresorhus/p-retry
 function retry(p, count) {
   function a() {
     return Promise.resolve(p()).then(
