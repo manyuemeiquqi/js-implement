@@ -1,32 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>JSONP 实例</title>
-</head>
-<body>
-<div id="divCustomers"></div>
-<script type="text/javascript">
-function callbackFunction(result, methodName)
-{
-    console.log('methodName: ', methodName);
+  <head>
+    <meta charset="utf-8" />
+    <title>JSONP 实例</title>
+  </head>
+  <body>
+    <div id="divCustomers"></div>
+    <script type="text/javascript">
+      function callbackFunction(result, methodName) {
+        console.log("methodName: ", methodName);
 
-    console.log(result);
-    const h1 = document.createElement('h1')
-    h1.innerHTML = `这就是服务端返回的信息 data: ${result}-${methodName}`
-    setTimeout(() => {
-        document.body.appendChild(h1)
-    }, 500);
-
-}
-</script>
-<!-- <script type="text/javascript" src="https://www.runoob.com/try/ajax/jsonp.php?jsoncallback=callbackFunction">
+        console.log(result);
+        const h1 = document.createElement("h1");
+        h1.innerHTML = `这就是服务端返回的信息 data: ${result}-${methodName}`;
+        setTimeout(() => {
+          document.body.appendChild(h1);
+        }, 500);
+      }
+    </script>
+    <!-- <script type="text/javascript" src="https://www.runoob.com/try/ajax/jsonp.php?jsoncallback=callbackFunction">
 
 </script> -->
-<script>
-    const script = document.createElement('script')
-    script.src = 'https://www.runoob.com/try/ajax/jsonp.php?jsoncallback=callbackFunction'
-    document.head.appendChild(script)
-</script>
-</body>
+    <script>
+      const script = document.createElement("script");
+      script.src =
+        "https://www.runoob.com/try/ajax/jsonp.php?jsoncallback=callbackFunction";
+      document.head.appendChild(script);
+    </script>
+  </body>
 </html>
