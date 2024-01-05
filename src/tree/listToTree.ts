@@ -1,4 +1,9 @@
 import { cloneDeep } from "lodash";
+
+/**
+ * 描述
+ * 给你一个 list 节点数组，通过数组构建出树
+ */
 const arr = [
   { id: 1, name: "部门1", pid: 0 },
   { id: 2, name: "部门2", pid: 1 },

@@ -71,4 +71,8 @@ function unique(array, fn = (val) => val) {
   return [...new Set(array.map(fn))];
 }
 
+
+function quickSort(l,r){
+  if
+}
 console.log(unique(array));

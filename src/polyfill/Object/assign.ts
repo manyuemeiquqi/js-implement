@@ -8,6 +8,7 @@ function myAssign(target: Obj, ...sources: Obj[]) {
       props[key] = Object.getOwnPropertyDescriptor(source, key);
       return props;
     }, {});
+    console.log("descriptors: ", JSON.stringify(descriptors));
 
     // 默认情况下，Object.assign 也会复制可枚举的 Symbol 属性
     // 过滤掉不可枚举的
