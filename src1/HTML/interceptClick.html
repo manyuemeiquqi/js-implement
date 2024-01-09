@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>a link</title>
+  </head>
+  <body>
+    <a href="https://zhuanlan.zhihu.com/p/111591503" target="_blank">baidu</a>
+    <a href="https://zhuanlan.zhihu.com/p/81448205" target="_parent"
+      >bytedance</a
+    >
+    <a
+      href="https://www.cnblogs.com/padding1015/p/prototype-chain.html"
+      target="_self"
+      >alibaba</a
+    >
+    <script>
+      var links = document.querySelectorAll("a");
+      for (var i = 0; i < links.length; i++) {
+        links[i].onclick = function (event) {
+          event.preventDefault();
+          const href = this.getAttribute("href");
+          const res = window.confirm(`是否跳转到指定的页面: ${href}`);
+          if (res) {
+            window.open(href, this.getAttribute("target"));
+          }
+        };
+      }
+    </script>
+  </body>
+</html>

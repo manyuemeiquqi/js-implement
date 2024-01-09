@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>debounce</title>
+  </head>
+  <body>
+    <button onclick="debouncedClick()">click</button>
+    <script>
+      function debounce(fn, timeout) {
+        let timer;
+        return function (...arr) {
+          if (!timer) clearTimeout(timer);
+          timeout = setTimeout(() => {
+            fn(...arr);
+            timeout = null;
+          }, timeout);
+        };
+      }
+
+      const onClick = function () {
+        console.log(this);
+        console.log("1212");
+      };
+
+      const debouncedClick = debounce(onClick, 500);
+    </script>
+  </body>
+</html>

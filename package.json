@@ -11,6 +11,7 @@
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-promise": "^6.0.0",
+    "mocha": "^10.2.0",
     "prettier": "^3.0.2",
     "typescript": "^5.1.6"
   },
@@ -20,7 +21,9 @@
     "ramda": "^0.29.0",
     "ts-node": "^10.9.1"
   },
+  "type": "module",
   "scripts": {
-    "test-promise": "promises-aplus-tests promise"
+    "test-promise": "promises-aplus-tests promise",
+    "test": "mocha"
   }
 }
