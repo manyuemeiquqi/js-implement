@@ -7,7 +7,7 @@ const toKey = (key) => {
 export default function get(object, path) {
   let i = 0;
   const len = path.length;
-  while (i < len && object !== null) {
+  while (i < len && ![null, undefined].includes(object)) {
     object = object[toKey(path[i++])];
   }
   return i === len ? object : undefined;
