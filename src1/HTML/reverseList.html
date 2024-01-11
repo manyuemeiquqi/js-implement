@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>reverse list dom</title>
+  </head>
+  <body>
+    <button id="reverse">reverse</button>
+    <input type="text" />
+    <script>
+      const createList = (n) => {
+        const ulDom = document.createElement("ul");
+        ulDom.setAttribute("id", "ul");
+        for (let i = 0; i < n; i++) {
+          const li = document.createElement("li");
+          li.setAttribute("key", i);
+          li.textContent = i + 1;
+          ulDom.appendChild(li);
+        }
+        return ulDom;
+      };
+      document.body.appendChild(createList(100));
+      const reverseBtn = document.querySelector("#reverse");
+      reverseBtn.addEventListener("click", (e) => {
+        const ulDom = document.querySelector("#ul");
+        const liList = ulDom.children;
+        const temp = document.createDocumentFragment();
+        const generateFragment = (i, target, fragment) => {
+          if (i >= 0) {
+            fragment.appendChild(liList[i]);
+            requestAnimationFrame(() =>
+              generateFragment(--i, target, fragment),
+            );
+          } else {
+            ulDom.innerHTML = "";
+            ulDom.appendChild(fragment);
+          }
+        };
+        requestAnimationFrame(() =>
+          generateFragment(liList.length - 1, liList.length, temp),
+        );
+      });
+    </script>
+  </body>
+</html>
