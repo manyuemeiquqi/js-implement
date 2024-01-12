@@ -21,4 +21,11 @@ function shuffle(arr) {
 console.log(mathRandom([1, 2, 3]));
 console.log(shuffle([1, 2, 3]));
 
+const splitPkg = (arr) => {
+  const maxPkg = Math.max(...arr);
+
+  const idx = arr.findIndex((item) => item === maxPkg);
+  part = 1 + Math.floor((maxPkg / 2) * Math.random());
+};
+
 export { shuffle };

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>红包生成器</h2>
+<div id="setting">
+  <div><label>红包金额：<input id="amount" value=100.00></input></label></div>
+  <div><label>红包数量：<input id="count" value="10"></input></label></div>
+  <div><button id="generateBtn">随机生成</button></div>
+</div>
+
+<ul id="result">
+</ul>
+<script>
+  function generate(amount, count){
+  let ret = [amount];
+  
+  while(count > 1){
+    //挑选出最大一块进行切分
+    let cake = Math.max(...ret),
+    
+        idx = ret.indexOf(cake),
+        part = 1 + Math.floor((cake / 2) * Math.random()),
+        rest = cake - part;
+    console.log(cake);
+    
+    ret.splice(idx, 1, part, rest);
+    
+    count--;
+  }
+  return ret;
+}
+
+const amountEl = document.getElementById('amount');
+const countEl = document.getElementById('count');
+const generateBtn = document.getElementById('generateBtn');
+const resultEl = document.getElementById('result');
+
+generateBtn.onclick = function(){
+  let amount = Math.round(parseFloat(amountEl.value) * 100);
+  let count = parseInt(countEl.value);
+  
+  let output = [];
+  
+  if(isNaN(amount) || isNaN(count) 
+     || amount <= 0 || count <= 0){
+    output.push('输入格式不正确！');
+  }else if(amount < count){
+    output.push('钱不够分')
+  }else{
+    output.push(...generate(amount, count));
+    output = output.map(m => (m / 100).toFixed(2));
+  }
+  resultEl.innerHTML = '<li>' + 
+                        output.join('</li><li>') +
+                       '</li>';
+}
+
+
+</script>
+</body>
+</html>
