@@ -1,8 +1,7 @@
-import { TreeNode } from "./type";
-const getAllLeaves = (root: TreeNode) => {
-  const ret: TreeNode[] = [];
+const getAllLeaves = (root) => {
+  const ret = [];
 
-  const dfs = (node: TreeNode) => {
+  const dfs = (node) => {
     const children = node.children;
 
     if (children === undefined || children.length === 0) {
