@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      splitPkg(100, 10);
+      function splitPkg(target, amount) {
+        const ret = [];
+        while (ret.length < target) {
+          let max = Math.max(...ret);
+          const half = (1 + Math.random() * (max / 2)) >> 0;
+          const rest = max - half;
+          const idx = ret.findIndex((item) => item === max);
+          ret.splice(idx, 1, rest, half);
+        }
+      }
+    </script>
+  </body>
+</html>

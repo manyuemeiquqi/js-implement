@@ -22,7 +22,6 @@
     "ramda": "^0.29.0",
     "ts-node": "^10.9.1"
   },
-  "type": "module",
   "scripts": {
     "test-promise": "promises-aplus-tests promise",
     "test": "mocha"
