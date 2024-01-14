@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header>
+        <nav>
+          <ul>
+            <li id="target"><a href="#">导航1</a></li>
+            <li><a href="#">导航2</a></li>
+            <li><a href="#">导航3</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <section>
+          <article>
+            <h1>文章标题</h1>
+            <p>这是一篇示例文章。</p>
+          </article>
+        </section>
+      </main>
+      <footer>
+        <p>版权信息</p>
+      </footer>
+    </div>
+    <script>
+      const getLevelFourDom = (dom) => {
+        const list = wrapper.children;
+        let i = 1;
+        let tmp = [];
+        let queue = [wrapper];
+        while (i < 5) {
+          while (queue.length > 0) {
+            const node = queue.shift();
+            const children = Array.from(node.children);
+            for (let i = 0; i < children.length; i++) {
+              tmp.push(children[i]);
+            }
+          }
+          while (tmp.length > 0) {
+            queue.push(tmp.shift());
+          }
+          i++;
+        }
+        return queue;
+      };
+      let wrapper = document.querySelector("#wrapper");
+      const ret = getLevelFourDom(wrapper);
+      console.log("ret: ", ret);
+      for (let i = 0; i < ret.length; i++) {
+        if (ret[i].id === "target") {
+          console.log(ret[i]);
+        }
+      }
+    </script>
+  </body>
+</html>
